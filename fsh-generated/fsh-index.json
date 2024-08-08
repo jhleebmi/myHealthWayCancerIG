@@ -1,0 +1,42 @@
+[
+  {
+    "outputFile": "Patient-Shorty.json",
+    "fshName": "Shorty",
+    "fshType": "Instance",
+    "fshFile": "FishPatient.fsh",
+    "startLine": 30,
+    "endLine": 34
+  },
+  {
+    "outputFile": "StructureDefinition-fish-patient.json",
+    "fshName": "FishPatient",
+    "fshType": "Profile",
+    "fshFile": "FishPatient.fsh",
+    "startLine": 3,
+    "endLine": 15
+  },
+  {
+    "outputFile": "StructureDefinition-fish-species.json",
+    "fshName": "FishSpecies",
+    "fshType": "Extension",
+    "fshFile": "FishPatient.fsh",
+    "startLine": 17,
+    "endLine": 22
+  },
+  {
+    "outputFile": "StructureDefinition-veterinarian.json",
+    "fshName": "Veterinarian",
+    "fshType": "Profile",
+    "fshFile": "Veterinarian.fsh",
+    "startLine": 4,
+    "endLine": 17
+  },
+  {
+    "outputFile": "ValueSet-fish-species-value-set.json",
+    "fshName": "FishSpeciesValueSet",
+    "fshType": "ValueSet",
+    "fshFile": "FishPatient.fsh",
+    "startLine": 24,
+    "endLine": 28
+  }
+]

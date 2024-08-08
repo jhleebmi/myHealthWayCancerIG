@@ -1,0 +1,6 @@
+Output File                            Name                 Type       FSH File          Lines
+Patient-Shorty.json                    Shorty               Instance   FishPatient.fsh   30 - 34
+StructureDefinition-fish-patient.json  FishPatient          Profile    FishPatient.fsh   3 - 15
+StructureDefinition-fish-species.json  FishSpecies          Extension  FishPatient.fsh   17 - 22
+StructureDefinition-veterinarian.json  Veterinarian         Profile    Veterinarian.fsh  4 - 17
+ValueSet-fish-species-value-set.json   FishSpeciesValueSet  ValueSet   FishPatient.fsh   24 - 28
