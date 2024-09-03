@@ -1,0 +1,233 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "myhealthway-cancer-tumor-size",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 3
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "cic"
+    }
+  ],
+  "url": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-tumor-size",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.40.15.42.63"
+    }
+  ],
+  "version": "4.0.0-ballot",
+  "name": "MyHealthWayTumorSize",
+  "title": "MyHealthWay Cancer Tumor Size Profile",
+  "status": "draft",
+  "publisher": "HL7 International / Clinical Interoperability Council",
+  "contact": [
+    {
+      "name": "HL7 International / Clinical Interoperability Council",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/cic"
+        },
+        {
+          "system": "email",
+          "value": "ciclist@lists.HL7.org"
+        }
+      ]
+    }
+  ],
+  "description": "Records the dimensions of a tumor",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "US",
+          "system": "urn:iso:std:iso:3166",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Observation",
+  "baseDefinition": "https://hins.or.kr/fhir/MyHealthWay/StructureDefinition/myhealthway-observation-laboratory",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "constraint": [
+          {
+            "key": "must-have-focus-or-specimen-invariant",
+            "human": "Either `focus` OR `specimen` MUST be populated",
+            "source": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-tumor-size",
+            "severity": "error",
+            "expression": "(focus.exists() or specimen.exists()) and (focus.exists() and specimen.exists()).not()"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "21889-1",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.subject",
+        "path": "Observation.subject",
+        "short": "The patient whose tumor was measured.",
+        "definition": "The patient whose tumor was measured. SHALL be a `Patient` resource conforming to `CancerPatient`."
+      },
+      {
+        "id": "Observation.focus",
+        "path": "Observation.focus",
+        "short": "Identifies a tumor that has NOT been removed from the body",
+        "definition": "Reference to a BodyStructure resource conforming to Tumor.",
+        "comment": "Use **only** when the tumor **has not** been removed from the body. If the tumor has been removed, use `specimen` instead and leave `focus` empty.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tumor"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "short": "Not used in this profile",
+        "definition": "Not used in this profile"
+      },
+      {
+        "id": "Observation.method",
+        "path": "Observation.method",
+        "short": "Method for measuring the tumor",
+        "definition": "Method for measuring the tumor",
+        "comment": "Tumors are typically measured via gross pathology after excision, or via diagnostic imaging or physical exam prior to removal. If `specimen` is set, `method` is expected to be a \"gross pathology\" code. If `focus` is set, `method` is expected to be a type of diagnostic imaging or physical exam.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-tumor-size-method-vs"
+        }
+      },
+      {
+        "id": "Observation.specimen",
+        "path": "Observation.specimen",
+        "short": "Identifies a tumor that has been removed from the body",
+        "definition": "Reference to a Specimen resource consistent with HumanSpecimen with type = http://terminology.hl7.org/CodeSystem/v2-0487#TUMOR.",
+        "comment": "Use specimen **only** when the tumor **has** been removed from the body. If the tumor has been not removed, use `focus` instead and leave `specimen` empty.",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-human-specimen"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "pattern",
+              "path": "code"
+            }
+          ],
+          "description": "Slice based on the component.code pattern",
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "Observation.component:tumorLongestDimension",
+        "path": "Observation.component",
+        "sliceName": "tumorLongestDimension",
+        "short": "Longest tumor dimension (cm or mm)",
+        "definition": "The longest tumor dimension in cm or mm.",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.component:tumorLongestDimension.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "33728-7",
+              "system": "http://loinc.org"
+            }
+          ]
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.component:tumorLongestDimension.value[x]",
+        "path": "Observation.component.value[x]",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-tumor-size-units-vs"
+        }
+      },
+      {
+        "id": "Observation.component:tumorOtherDimension",
+        "path": "Observation.component",
+        "sliceName": "tumorOtherDimension",
+        "short": "2nd or 3rd tumor dimension (cm or mm)",
+        "definition": "The second or third tumor dimension in cm or mm.",
+        "comment": "Additional tumor dimensions should be ordered from largest to smallest.",
+        "min": 0,
+        "max": "2",
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.component:tumorOtherDimension.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "33729-5",
+              "system": "http://loinc.org"
+            }
+          ]
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.component:tumorOtherDimension.value[x]",
+        "path": "Observation.component.value[x]",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-tumor-size-units-vs"
+        }
+      }
+    ]
+  }
+}

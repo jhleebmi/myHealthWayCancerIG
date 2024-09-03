@@ -1,0 +1,258 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "myhealthway-cancer-radiotherapy-course-summary",
+  "url": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-radiotherapy-course-summary",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.40.15.42.43"
+    }
+  ],
+  "name": "MyHealthWayRadiotherapyCourseSummary",
+  "title": "MyHealthWay Cancer Radiotherapy Course Summary Profile",
+  "status": "draft",
+  "publisher": "HL7 International / Clinical Interoperability Council",
+  "contact": [
+    {
+      "name": "HL7 International / Clinical Interoperability Council",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/cic"
+        },
+        {
+          "system": "email",
+          "value": "ciclist@lists.HL7.org"
+        }
+      ]
+    }
+  ],
+  "description": "A summary of a course of radiotherapy delivered to a patient. It records the treatment intent, termination reason, modalities, techniques, number of sessions, and doses delivered to one or more body volumes. Whether the course has been fully delivered or stopped is indicated in the status element.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "US",
+          "system": "urn:iso:std:iso:3166",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Procedure",
+  "baseDefinition": "https://hins.or.kr/fhir/MyHealthWay/StructureDefinition/myhealthway-procedure",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Procedure",
+        "path": "Procedure",
+        "constraint": [
+          {
+            "key": "termination-reason-code-invariant",
+            "human": "When status is stopped, only certain statusReason values are allowed",
+            "source": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-radiotherapy-course-summary",
+            "severity": "error",
+            "expression": "status = 'stopped' and statusReason.exists() and statusReason.coding.exists() implies statusReason.coding.exists(system = 'http://snomed.info/sct' and (code = '182992009' or code = '266721009' or code = '407563006' or code = '160932005' or code = '105480006' or code = '184081006' or code = '309846006' or code = '399307001' or code = '419620001' or code = '7058009' or code = '443729008' or code = '77386006'))"
+          },
+          {
+            "key": "termination-reason-invariant",
+            "human": "Certain statusReason values are allowed only when status is stopped",
+            "source": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-radiotherapy-course-summary",
+            "severity": "error",
+            "expression": "statusReason.exists() and statusReason.coding.exists(\n      system = 'http://snomed.info/sct' and (code = '182992009' or code = '266721009' or code = '407563006' or code = '160932005' or\n code = '105480006' or code = '184081006' or code = '309846006' or code = '399307001' or  code = '419620001' or code = '7058009' or code = '443729008' or code = '77386006')) implies status = 'stopped'"
+          },
+          {
+            "key": "mcode-reason-required",
+            "human": "One of reasonCode or reasonReference SHALL be present",
+            "source": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-radiotherapy-course-summary",
+            "severity": "warning",
+            "expression": "reasonCode.exists() or reasonReference.exists()"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.extension",
+        "path": "Procedure.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.extension:treatmentIntent",
+        "path": "Procedure.extension",
+        "sliceName": "treatmentIntent",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-procedure-intent"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.extension:terminationReason",
+        "path": "Procedure.extension",
+        "sliceName": "terminationReason",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-treatment-termination-reason"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.extension:modalityAndTechnique",
+        "path": "Procedure.extension",
+        "sliceName": "modalityAndTechnique",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-radiotherapy-modality-and-technique"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.extension:actualNumberOfSessions",
+        "path": "Procedure.extension",
+        "sliceName": "actualNumberOfSessions",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-radiotherapy-sessions"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.extension:doseDeliveredToVolume",
+        "path": "Procedure.extension",
+        "sliceName": "doseDeliveredToVolume",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-radiotherapy-dose-delivered-to-volume"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.statusReason",
+        "path": "Procedure.statusReason",
+        "binding": {
+          "strength": "preferred",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-treatment-termination-reason-vs"
+        }
+      },
+      {
+        "id": "Procedure.code",
+        "path": "Procedure.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "1217123003",
+              "system": "http://snomed.info/sct"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Procedure.subject",
+        "path": "Procedure.subject",
+        "definition": "The patient on whom the procedure was performed."
+      },
+      {
+        "id": "Procedure.reasonCode",
+        "path": "Procedure.reasonCode",
+        "mustSupport": true,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-cancer-disorder-vs"
+        }
+      },
+      {
+        "id": "Procedure.reasonReference",
+        "path": "Procedure.reasonReference",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.bodySite",
+        "path": "Procedure.bodySite",
+        "short": "All body structure(s) treated",
+        "definition": "Coded body structure(s) treated in this course of radiotherapy. These codes represent general locations. For additional detail, refer to the BodyStructures references in the doseDeliveredToVolume extension.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-radiotherapy-treatment-location-vs"
+        }
+      },
+      {
+        "id": "Procedure.bodySite.extension:locationQualifier",
+        "path": "Procedure.bodySite.extension",
+        "sliceName": "locationQualifier",
+        "short": "General location qualifier (excluding laterality) for this bodySite",
+        "definition": "General location qualifier (excluding laterality) for this bodySite",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-body-location-qualifier"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Procedure.bodySite.extension:lateralityQualifier",
+        "path": "Procedure.bodySite.extension",
+        "sliceName": "lateralityQualifier",
+        "short": "Laterality qualifier for this bodySite",
+        "definition": "Laterality qualifier for this bodySite",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality-qualifier"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

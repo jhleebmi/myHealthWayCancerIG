@@ -1,0 +1,23 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "myhealthway-cancer-mcode-paient-bundle",
+  "url": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-mcode-paient-bundle",
+  "name": "MyHealthWayPatientBundle",
+  "title": "MyHealthWay Cancer Patient Bundle Profile",
+  "status": "draft",
+  "description": "A collection of data for an mCODE cancer patient.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Bundle",
+  "baseDefinition": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-patient-bundle",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Bundle",
+        "path": "Bundle"
+      }
+    ]
+  }
+}

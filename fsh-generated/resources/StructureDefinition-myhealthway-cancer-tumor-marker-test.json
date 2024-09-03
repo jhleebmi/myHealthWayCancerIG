@@ -1,0 +1,162 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "myhealthway-cancer-tumor-marker-test",
+  "url": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-tumor-marker-test",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.40.15.42.61"
+    }
+  ],
+  "name": "MyHealthWayTumorMarkerTest",
+  "title": "MyHealthWay Cancer Tumor Marker Test Profile",
+  "status": "draft",
+  "publisher": "HL7 International / Clinical Interoperability Council",
+  "contact": [
+    {
+      "name": "HL7 International / Clinical Interoperability Council",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/cic"
+        },
+        {
+          "system": "email",
+          "value": "ciclist@lists.HL7.org"
+        }
+      ]
+    }
+  ],
+  "description": "The result of a tumor marker test. Tumor marker tests are generally used to guide cancer treatment decisions and monitor treatment, as well as to predict the chance of recovery and cancer recurrence.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "US",
+          "system": "urn:iso:std:iso:3166",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Observation",
+  "baseDefinition": "https://hins.or.kr/fhir/MyHealthWay/StructureDefinition/myhealthway-observation-laboratory",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation.extension",
+        "path": "Observation.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.extension:relatedCondition",
+        "path": "Observation.extension",
+        "sliceName": "relatedCondition",
+        "short": "Condition associated with this test.",
+        "definition": "Associates the tumor marker test with a condition, if one exists. Condition can be given by a reference or a code. In the case of a screening test such as prostate-specific antigen (PSA), there may be no existing condition to reference.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-related-condition"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-tumor-marker-test-vs"
+        }
+      },
+      {
+        "id": "Observation.subject",
+        "path": "Observation.subject",
+        "definition": "Patient whose test result is recorded."
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "type": [
+          {
+            "code": "dateTime",
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support",
+                "valueBoolean": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "Quantity",
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support",
+                "valueBoolean": true
+              }
+            ]
+          },
+          {
+            "code": "CodeableConcept",
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support",
+                "valueBoolean": true
+              }
+            ]
+          },
+          {
+            "code": "string",
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support",
+                "valueBoolean": true
+              }
+            ]
+          },
+          {
+            "code": "Ratio"
+          }
+        ]
+      },
+      {
+        "id": "Observation.specimen",
+        "path": "Observation.specimen",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-human-specimen"
+            ]
+          }
+        ],
+        "mustSupport": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "myhealthway-cancer-radiotherapy-volume",
+  "url": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-radiotherapy-volume",
+  "name": "MyHealthWayRadiotherapyVolume",
+  "title": "MyHealthWay Cancer Radiotherapy Volume Profile",
+  "status": "draft",
+  "description": "A volume of the body used in radiotherapy planning or treatment delivery.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "BodyStructure",
+  "baseDefinition": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-radiotherapy-volume",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "BodyStructure",
+        "path": "BodyStructure"
+      }
+    ]
+  }
+}

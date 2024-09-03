@@ -1,0 +1,23 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "myhealthway-cancer-human-specimen",
+  "url": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-human-specimen",
+  "name": "MyHealthWayHumanSpecimen",
+  "title": "MyHealthWay Cancer Human Specimen Profile",
+  "status": "draft",
+  "description": "A specimen taken from a Patient for the purpose of oncology-related testing. The profile includes extensions to specify a more precise body site and an identifier of source body structure at that site (for example, a tumor identifier).",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Specimen",
+  "baseDefinition": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-human-specimen",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Specimen",
+        "path": "Specimen"
+      }
+    ]
+  }
+}

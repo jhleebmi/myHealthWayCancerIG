@@ -1,0 +1,246 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "myhealthwaycancer",
+  "url": "http://example.org/fhir/myhealthwaycancer/ImplementationGuide/myhealthwaycancer",
+  "version": "0.1.0",
+  "name": "MyHealthWayCancerImplementationGuide",
+  "title": "MyHealthWay Cancer Implementation Guide",
+  "status": "draft",
+  "contact": [
+    {
+      "name": "Jaehoon Lee",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "jhlee.bmi@gmail.com"
+        }
+      ]
+    }
+  ],
+  "description": "MyHealthWay Cancer Implementation Guide",
+  "packageId": "myhealthwaycancer",
+  "license": "CC0-1.0",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "dependsOn": [
+    {
+      "packageId": "kr.mohw.myhealthway",
+      "version": "1.0.1",
+      "uri": "https://hins.or.kr/fhir/MyHealthWay/ImplementationGuide/kr.mohw.myhealthway",
+      "id": "kr_mohw_myhealthway"
+    },
+    {
+      "packageId": "hl7.fhir.us.mcode",
+      "version": "4.0.0",
+      "uri": "http://hl7.org/fhir/us/mcode",
+      "id": "hl7_fhir_us_mcode"
+    }
+  ],
+  "definition": {
+    "resource": [
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-bodysurface"
+        },
+        "name": "MyHealthWay Cancer Body Surface Profile",
+        "description": "MyHealthWay Cancer Body Surface Profile",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-disease-status"
+        },
+        "name": "MyHealthWay Cancer Disease Status Profile",
+        "description": "A clinician's qualitative judgment on the current trend of the cancer, e.g., whether it is stable, worsening (progressing), or improving (responding). The judgment may be based a single type or multiple kinds of evidence, such as imaging data, assessment of symptoms, tumor markers, laboratory data, etc.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-ecog-performance-status"
+        },
+        "name": "MyHealthWay Cancer ECOG Performance Status Profile",
+        "description": "The Eastern Cooperative Oncology Group (ECOG) Performance Status represents the patient's functional status and is used to determine their ability to tolerate therapies in serious illness, specifically for chemotherapy. (Definition from: [LOINC](https://loinc.org/89262-0/))",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-histologic-behavior-and-type"
+        },
+        "name": "MyHealthWay Cancer Histologic Behavior and Type",
+        "description": "Histologic behavior and type determined from examination of tumor sample. ICD-O-3 morphology codes are referenced in the logical definition but not expanded in the value set for intellectual property reasons. For primary cancers, the ICD-O-3 behavior suffix should be /1, /2, or /3. For secondary cancers, the ICD-O-3 behavior suffix should be /6. ",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-histologic-grade"
+        },
+        "name": "MyHealthWay Cancer Histologic Grade",
+        "description": "Histologic grade determined from examination of tumor sample.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-history-of-mstastatic-cancer"
+        },
+        "name": "MyHealthWay Cancer History of Metastatic Cancer",
+        "description": "Records the existence of a past episode of metastatic cancer, for the purpose of long term management and tracking.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-human-specimen"
+        },
+        "name": "MyHealthWay Cancer Human Specimen Profile",
+        "description": "A specimen taken from a Patient for the purpose of oncology-related testing. The profile includes extensions to specify a more precise body site and an identifier of source body structure at that site (for example, a tumor identifier).",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-karnofsky-performance-status"
+        },
+        "name": "MyHealthWay Cancer Karnofsky Performance Status Profile",
+        "description": "The Karnofsky Performance Status (KPS) is a tool used to measure a patient's functional status. It can be used to compare the effectiveness of different therapies and to help assess the prognosis of certain patients, such as those with certain cancers. The KPS score ranges from 0 to 100 in intervals of 10. Higher scores are associated with better functional status, with 100 representing no symptoms or evidence of disease, and 0 representing death.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-lanskyplay-performance-status"
+        },
+        "name": "MyHealthWay Cancer Lansky Play Performance Status Profile",
+        "description": "The Lansky Play-Performance Status for children is a parent-rated instrument which records usual play activity as the index of performance. It is similar to the Karnofsky Performance Scale for adults (Definition from: [NCI Thesaurus](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C38144&ns=ncit)).",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-mcode-paient-bundle"
+        },
+        "name": "MyHealthWay Cancer Patient Bundle Profile",
+        "description": "A collection of data for an mCODE cancer patient.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-primary-cancer-condition"
+        },
+        "name": "MyHealthWay Cancer Primary Cancer Condition Profile",
+        "description": "Records the the primary cancer condition, the original or first neoplasm in the body (Definition from: [NCI Dictionary of Cancer Terms](https://www.cancer.gov/publications/dictionaries/cancer-terms/def/primary-tumor)). Cancers that are not clearly secondary (i.e., of uncertain origin or behavior) should be documented as primary.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-radiotherapy-course-summary"
+        },
+        "name": "MyHealthWay Cancer Radiotherapy Course Summary Profile",
+        "description": "A summary of a course of radiotherapy delivered to a patient. It records the treatment intent, termination reason, modalities, techniques, number of sessions, and doses delivered to one or more body volumes. Whether the course has been fully delivered or stopped is indicated in the status element.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-radiotherapy-volume"
+        },
+        "name": "MyHealthWay Cancer Radiotherapy Volume Profile",
+        "description": "A volume of the body used in radiotherapy planning or treatment delivery.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-secondary-cancer-condition"
+        },
+        "name": "MyHealthWay Cancer Secondary Cancer Condition Profile",
+        "description": "Records the history of secondary neoplasms, including location(s) and the date of onset of metastases. A secondary cancer results from the spread (metastasization) of cancer from its original site (Definition from: NCI Dictionary of Cancer Terms).",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-tnm-distant-metastases-category"
+        },
+        "name": "MyHealthWay Cancer TNM Distant Metastases Category Profile",
+        "description": "Category describing the extent of a tumor metastasis in remote anatomical locations, based on evidence such as physical examination, imaging, and/or biopsy.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-tnm-primary-tumor-category"
+        },
+        "name": "MyHealthWay Cancer TNM Primary Tumor Category Profile",
+        "description": "Category of the primary tumor, based on its size and extent, based on evidence such as physical examination, imaging, and/or biopsy.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-tnm-regional-nodes-category"
+        },
+        "name": "MyHealthWay Cancer TNM Regional Nodes Category Profile",
+        "description": "Category of the presence or absence of metastases in regional lymph nodes, based on evidence such as physical examination, imaging, and/or biopsy.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-tnm-stage-group"
+        },
+        "name": "MyHealthWay Cancer TNM Stage Group Profile",
+        "description": "Reporting of the stage group representing the overall extent of a cancer, based on AJCC staging guidelines.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-tumor-marker-test"
+        },
+        "name": "MyHealthWay Cancer Tumor Marker Test Profile",
+        "description": "The result of a tumor marker test. Tumor marker tests are generally used to guide cancer treatment decisions and monitor treatment, as well as to predict the chance of recovery and cancer recurrence.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-tumor"
+        },
+        "name": "MyHealthWay Cancer Tumor Profile",
+        "description": "Identifies a tumor that has not been removed from the body. Whenever possible, a single resource conforming to this profile will be used to track a tumor over time (as opposed to creating new Tumor-conforming BodyStructure resources each time that tumor is measured). Use HumanSpecimen to represent the tumor after removal from the body. \nNote that the required code for morphology used in STU2 is now inactive.  A new code has been specified and SHOULD be used, but the old code remains conformant.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/myhealthway-cancer-tumor-size"
+        },
+        "name": "MyHealthWay Cancer Tumor Size Profile",
+        "description": "Records the dimensions of a tumor",
+        "exampleBoolean": false
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": [
+        {
+          "nameUrl": "index.html",
+          "title": "Home",
+          "generation": "markdown"
+        }
+      ]
+    },
+    "parameter": [
+      {
+        "code": "copyrightyear",
+        "value": "2024+"
+      },
+      {
+        "code": "releaselabel",
+        "value": "ci-build"
+      },
+      {
+        "code": "apply-publisher",
+        "value": "true"
+      },
+      {
+        "code": "apply-contact",
+        "value": "true"
+      },
+      {
+        "code": "show-inherited-invariants",
+        "value": "false"
+      }
+    ]
+  }
+}

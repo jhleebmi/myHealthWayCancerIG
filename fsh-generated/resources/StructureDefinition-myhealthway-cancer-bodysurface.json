@@ -1,0 +1,79 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "myhealthway-cancer-bodysurface",
+  "url": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-bodysurface",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.40.15.42.4"
+    }
+  ],
+  "name": "MyHealthWayBodySurface",
+  "title": "MyHealthWay Cancer Body Surface Profile",
+  "status": "draft",
+  "publisher": "HL7 International / Clinical Interoperability Council",
+  "contact": [
+    {
+      "name": "HL7 International / Clinical Interoperability Council",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/cic"
+        },
+        {
+          "system": "email",
+          "value": "ciclist@lists.HL7.org"
+        }
+      ]
+    }
+  ],
+  "description": "MyHealthWay Cancer Body Surface Profile",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "US",
+          "system": "urn:iso:std:iso:3166",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Observation",
+  "baseDefinition": "https://hins.or.kr/fhir/MyHealthWay/StructureDefinition/myhealthway-observation-exam",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "8277-6",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "type": [
+          {
+            "code": "Quantity",
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support",
+                "valueBoolean": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "myhealthway-cancer-tnm-stage-group",
+  "url": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-tnm-stage-group",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.40.15.42.59"
+    }
+  ],
+  "name": "MyHealthWayTNMStageGroup",
+  "title": "MyHealthWay Cancer TNM Stage Group Profile",
+  "status": "draft",
+  "publisher": "HL7 International / Clinical Interoperability Council",
+  "contact": [
+    {
+      "name": "HL7 International / Clinical Interoperability Council",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/cic"
+        },
+        {
+          "system": "email",
+          "value": "ciclist@lists.HL7.org"
+        }
+      ]
+    }
+  ],
+  "description": "Reporting of the stage group representing the overall extent of a cancer, based on AJCC staging guidelines.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "US",
+          "system": "urn:iso:std:iso:3166",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Observation",
+  "baseDefinition": "https://hins.or.kr/fhir/MyHealthWay/StructureDefinition/myhealthway-observation-laboratory",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "binding": {
+          "strength": "preferred",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-tnm-stage-group-staging-type-vs",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet",
+              "valueCanonical": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-tnm-stage-group-staging-type-max-vs"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.focus",
+        "path": "Observation.focus",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "short": "The stage group",
+        "definition": "The overall cancer stage, such as stage group IIA.",
+        "binding": {
+          "strength": "preferred",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-tnm-stage-group-vs",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet",
+              "valueCanonical": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-tnm-stage-group-max-vs"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.method",
+        "path": "Observation.method",
+        "min": 1,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-tnm-staging-method-vs"
+        }
+      },
+      {
+        "id": "Observation.hasMember",
+        "path": "Observation.hasMember",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this.resolve()"
+            }
+          ],
+          "description": "Slicing based on profile conformance of the referenced resource.",
+          "rules": "open"
+        },
+        "short": "Element containing the T, N, and M categories as references to separate T, N, M observations. The referenced resources are observations leading to the Stage Group reported in the current resource.",
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.hasMember:TNMCategory",
+        "path": "Observation.hasMember",
+        "sliceName": "TNMCategory",
+        "min": 0,
+        "max": "3",
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "short": "Not used in this profile",
+        "definition": "Not used in this profile"
+      }
+    ]
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "myhealthway-cancer-ecog-performance-status",
+  "url": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-ecog-performance-status",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.40.15.42.17"
+    }
+  ],
+  "name": "MyHealthWayECOGPerformanceStatus",
+  "title": "MyHealthWay Cancer ECOG Performance Status Profile",
+  "status": "draft",
+  "publisher": "HL7 International / Clinical Interoperability Council",
+  "contact": [
+    {
+      "name": "HL7 International / Clinical Interoperability Council",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/cic"
+        },
+        {
+          "system": "email",
+          "value": "ciclist@lists.HL7.org"
+        }
+      ]
+    }
+  ],
+  "description": "The Eastern Cooperative Oncology Group (ECOG) Performance Status represents the patient's functional status and is used to determine their ability to tolerate therapies in serious illness, specifically for chemotherapy. (Definition from: [LOINC](https://loinc.org/89262-0/))",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "US",
+          "system": "urn:iso:std:iso:3166",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Observation",
+  "baseDefinition": "https://hins.or.kr/fhir/MyHealthWay/StructureDefinition/myhealthway-observation-exam",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation.basedOn",
+        "path": "Observation.basedOn",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/ServiceRequest",
+              "http://hl7.org/fhir/StructureDefinition/CarePlan"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.partOf",
+        "path": "Observation.partOf",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Procedure"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "89247-1",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.subject",
+        "path": "Observation.subject",
+        "definition": "Patient whose performance status is recorded."
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "type": [
+          {
+            "code": "integer"
+          }
+        ]
+      },
+      {
+        "id": "Observation.interpretation",
+        "path": "Observation.interpretation",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://loinc.org/vs/LL529-9"
+        }
+      },
+      {
+        "id": "Observation.bodySite",
+        "path": "Observation.bodySite",
+        "short": "Not used in this profile",
+        "definition": "Not used in this profile"
+      },
+      {
+        "id": "Observation.specimen",
+        "path": "Observation.specimen",
+        "short": "Not used in this profile",
+        "definition": "Not used in this profile"
+      },
+      {
+        "id": "Observation.device",
+        "path": "Observation.device",
+        "short": "Not used in this profile",
+        "definition": "Not used in this profile"
+      },
+      {
+        "id": "Observation.hasMember",
+        "path": "Observation.hasMember",
+        "short": "Not used in this profile",
+        "definition": "Not used in this profile"
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "short": "Not used in this profile",
+        "definition": "Not used in this profile"
+      }
+    ]
+  }
+}

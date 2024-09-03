@@ -1,0 +1,179 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "myhealthway-cancer-primary-cancer-condition",
+  "url": "http://example.org/fhir/myhealthwaycancer/StructureDefinition/myhealthway-cancer-primary-cancer-condition",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.40.15.42.40"
+    }
+  ],
+  "name": "MyHealthWayPrimaryCancerCondition",
+  "title": "MyHealthWay Cancer Primary Cancer Condition Profile",
+  "status": "draft",
+  "publisher": "HL7 International / Clinical Interoperability Council",
+  "contact": [
+    {
+      "name": "HL7 International / Clinical Interoperability Council",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/cic"
+        },
+        {
+          "system": "email",
+          "value": "ciclist@lists.HL7.org"
+        }
+      ]
+    }
+  ],
+  "description": "Records the the primary cancer condition, the original or first neoplasm in the body (Definition from: [NCI Dictionary of Cancer Terms](https://www.cancer.gov/publications/dictionaries/cancer-terms/def/primary-tumor)). Cancers that are not clearly secondary (i.e., of uncertain origin or behavior) should be documented as primary.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "US",
+          "system": "urn:iso:std:iso:3166",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Condition",
+  "baseDefinition": "https://hins.or.kr/fhir/MyHealthWay/StructureDefinition/myhealthway-condition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Condition.extension",
+        "path": "Condition.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.extension:histologyMorphologyBehavior",
+        "path": "Condition.extension",
+        "sliceName": "histologyMorphologyBehavior",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-histology-morphology-behavior"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.code",
+        "path": "Condition.code",
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-primary-cancer-disorder-vs"
+        }
+      },
+      {
+        "id": "Condition.bodySite",
+        "path": "Condition.bodySite",
+        "mustSupport": true,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-cancer-body-location-vs"
+        }
+      },
+      {
+        "id": "Condition.bodySite.extension:locationQualifier",
+        "path": "Condition.bodySite.extension",
+        "sliceName": "locationQualifier",
+        "short": "General location qualifier (excluding laterality) for this bodySite",
+        "definition": "General location qualifier (excluding laterality) for this bodySite",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-body-location-qualifier"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.bodySite.extension:lateralityQualifier",
+        "path": "Condition.bodySite.extension",
+        "sliceName": "lateralityQualifier",
+        "short": "Laterality qualifier for this bodySite",
+        "definition": "Laterality qualifier for this bodySite",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality-qualifier"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.stage",
+        "path": "Condition.stage",
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.stage.summary",
+        "path": "Condition.stage.summary",
+        "short": "Stage at time of last staging.",
+        "definition": "Most recent overall cancer stage, such as stage group IIA in TNM staging. More detailed staging information (such as the individual T, N, and M categories) SHOULD be captured in a separate Observation resource, referenced by stage.assessment, conforming to CancerStage profile."
+      },
+      {
+        "id": "Condition.stage.assessment",
+        "path": "Condition.stage.assessment",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-stage"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.stage.type",
+        "path": "Condition.stage.type",
+        "short": "The type of stage Staging system or method used.",
+        "definition": "The type of stage reported in stage.summary, or the staging method used to arrive at the stage.summary value.",
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-cancer-staging-method-vs"
+        }
+      },
+      {
+        "id": "Condition.evidence.code",
+        "path": "Condition.evidence.code",
+        "orderMeaning": "If more than one code or Reference is present, it is interpreted as the the physician's declaration of how the cancer was diagnosed, with the most invasive method first (e.g., autopsy/histopathology, cytology, radiology, physicial exam, etc.)",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-cancer-disease-status-evidence-type-vs"
+        }
+      }
+    ]
+  }
+}

@@ -3,28 +3,31 @@
 # │  supported properties, see:                                                                    │
 # │  https://fshschool.org/docs/sushi/configuration/#full-configuration                            │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-id: fish
-canonical: http://example.org/fhir/fish
+id: myhealthwaycancer
+canonical: http://example.org/fhir/myhealthwaycancer
 version: 0.1.0
-name: FishImplementationGuide
-title: Fish Implementation Guide
+name: MyHealthWayCancerImplementationGuide
+title: MyHealthWay Cancer Implementation Guide
 status: draft
-publisher: James Tuna
+publisher: Jaehoon Lee
 contact:
-  - name: Bill Cod
+  - name: Jaehoon Lee
     telecom:
       - system: email
-        value: cod@reef.gov
-description: An example of how FSH can be used to create an IG about fish
+        value: jhlee.bmi@gmail.com
+description: MyHealthWay Cancer Implementation Guide
 license: CC0-1.0
 fhirVersion: 4.0.1
 parameters:
   apply-publisher: true
   apply-contact: true
   show-inherited-invariants: false
-copyrightYear: 2020+
+copyrightYear: 2024+
 releaseLabel: ci-build
-
+dependencies:
+  kr.mohw.myhealthway: 1.0.1
+  hl7.fhir.us.mcode: 4.0.0
+  
 # ╭────────────────────────────────────────────menu.xml────────────────────────────────────────────╮
 # │  To use a provided input/includes/menu.xml file, delete the "menu" property below.             │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯

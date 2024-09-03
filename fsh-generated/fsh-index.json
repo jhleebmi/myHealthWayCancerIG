@@ -1,42 +1,170 @@
 [
   {
-    "outputFile": "Patient-Shorty.json",
-    "fshName": "Shorty",
-    "fshType": "Instance",
-    "fshFile": "FishPatient.fsh",
-    "startLine": 30,
-    "endLine": 34
-  },
-  {
-    "outputFile": "StructureDefinition-fish-patient.json",
-    "fshName": "FishPatient",
+    "outputFile": "StructureDefinition-myhealthway-cancer-bodysurface.json",
+    "fshName": "MyHealthWayBodySurface",
     "fshType": "Profile",
-    "fshFile": "FishPatient.fsh",
-    "startLine": 3,
-    "endLine": 15
-  },
-  {
-    "outputFile": "StructureDefinition-fish-species.json",
-    "fshName": "FishSpecies",
-    "fshType": "Extension",
-    "fshFile": "FishPatient.fsh",
-    "startLine": 17,
+    "fshFile": "MyHealthWayBodySurface.fsh",
+    "startLine": 5,
     "endLine": 22
   },
   {
-    "outputFile": "StructureDefinition-veterinarian.json",
-    "fshName": "Veterinarian",
+    "outputFile": "StructureDefinition-myhealthway-cancer-disease-status.json",
+    "fshName": "MyHealthWayCancerDiseaseStatus",
     "fshType": "Profile",
-    "fshFile": "Veterinarian.fsh",
-    "startLine": 4,
-    "endLine": 17
+    "fshFile": "MyHealthWayDiseaseStatus.fsh",
+    "startLine": 10,
+    "endLine": 52
   },
   {
-    "outputFile": "ValueSet-fish-species-value-set.json",
-    "fshName": "FishSpeciesValueSet",
-    "fshType": "ValueSet",
-    "fshFile": "FishPatient.fsh",
-    "startLine": 24,
-    "endLine": 28
+    "outputFile": "StructureDefinition-myhealthway-cancer-ecog-performance-status.json",
+    "fshName": "MyHealthWayECOGPerformanceStatus",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayECOGPerformanceStatus.fsh",
+    "startLine": 6,
+    "endLine": 38
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-histologic-behavior-and-type.json",
+    "fshName": "MyHealthWayHistologicBehaviorAndType",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayHistologicBehaviorAndType.fsh",
+    "startLine": 8,
+    "endLine": 35
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-histologic-grade.json",
+    "fshName": "MyHealthWayHistologicGrade",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayHistologicGrade.fsh",
+    "startLine": 9,
+    "endLine": 38
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-history-of-mstastatic-cancer.json",
+    "fshName": "MyHealthWayHistoryOfMetastaticCancer",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayHistoryOfMetastaticCancer.fsh",
+    "startLine": 3,
+    "endLine": 23
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-human-specimen.json",
+    "fshName": "MyHealthWayHumanSpecimen",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayHumanSpecimen.fsh",
+    "startLine": 1,
+    "endLine": 5
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-karnofsky-performance-status.json",
+    "fshName": "MyHealthWayKarnofskyPerformanceStatus",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayKarnofskyPerformanceStatus.fsh",
+    "startLine": 6,
+    "endLine": 38
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-lanskyplay-performance-status.json",
+    "fshName": "MyHealthWayLanskyPlayPerformanceStatus",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayLanskyPlayPerformanceStatus.fsh",
+    "startLine": 6,
+    "endLine": 38
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-mcode-paient-bundle.json",
+    "fshName": "MyHealthWayPatientBundle",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayMCODEPatientBundle.fsh",
+    "startLine": 3,
+    "endLine": 7
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-primary-cancer-condition.json",
+    "fshName": "MyHealthWayPrimaryCancerCondition",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayPrimaryCancerCondition.fsh",
+    "startLine": 11,
+    "endLine": 46
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-radiotherapy-course-summary.json",
+    "fshName": "MyHealthWayRadiotherapyCourseSummary",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayRadiotherapyCourseSummary.fsh",
+    "startLine": 16,
+    "endLine": 54
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-radiotherapy-volume.json",
+    "fshName": "MyHealthWayRadiotherapyVolume",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayRadiotherapyVolume.fsh",
+    "startLine": 1,
+    "endLine": 5
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-secondary-cancer-condition.json",
+    "fshName": "MyHealthWaySecondaryCancerCondition",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWaySecondaryCancerCondition.fsh",
+    "startLine": 10,
+    "endLine": 43
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-tnm-distant-metastases-category.json",
+    "fshName": "MyHealthWayTNMDistantMetastasesCategory",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayTNMDistantMetastasesCategory.fsh",
+    "startLine": 5,
+    "endLine": 24
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-tnm-primary-tumor-category.json",
+    "fshName": "MyHealthWayTNMPrimaryTumorCategory",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayTNMPrimaryTumorCategory.fsh",
+    "startLine": 5,
+    "endLine": 24
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-tnm-regional-nodes-category.json",
+    "fshName": "MyHealthWayTNMRegionalNodesCategory",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayTNMRegionalNodesCategory.fsh",
+    "startLine": 5,
+    "endLine": 24
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-tnm-stage-group.json",
+    "fshName": "MyHealthWayTNMStageGroup",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayTNMStageGroup.fsh",
+    "startLine": 6,
+    "endLine": 39
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-tumor-marker-test.json",
+    "fshName": "MyHealthWayTumorMarkerTest",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayTumorMarkerTest.fsh",
+    "startLine": 7,
+    "endLine": 37
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-tumor-size.json",
+    "fshName": "MyHealthWayTumorSize",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayTumorSize.fsh",
+    "startLine": 8,
+    "endLine": 73
+  },
+  {
+    "outputFile": "StructureDefinition-myhealthway-cancer-tumor.json",
+    "fshName": "MyHealthWayTumor",
+    "fshType": "Profile",
+    "fshFile": "MyHealthWayTumor.fsh",
+    "startLine": 2,
+    "endLine": 6
   }
 ]
